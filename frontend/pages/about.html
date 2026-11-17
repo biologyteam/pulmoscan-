@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | E-Nose PulmoScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<header class="site"><div class="wrap bar">
+<a class="logo" href="../index.html"><img src="../assets/lungs.png" alt=""><span>E-Nose PulmoScan</span></a>
+<nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/dashboard.html">Dashboard</a><a href="../pages/breathing-analysis.html">Audio Analysis</a><a href="../pages/electronic-nose.html">Electronic Nose</a><a href="../pages/model-performance.html">Model Performance</a><a href="../pages/research.html">Research</a><a href="../pages/about.html" aria-current="page">About</a></nav>
+</div></header>
+<div class="pagehead"><div class="wrap"><h1>About</h1><p>Why we are studying breath analysis for asthma, how the system is built, and what is and is not implemented.</p></div></div>
+<main>
+<section><div class="wrap stack">
+<div class="panel"><h2>The idea</h2><p class="muted">The central objective is AI-based asthma detection using breath analysis. The prototype records breathing sounds with a stethoscope and analyzes them for wheeze-like and crackle-like patterns, and separately reads an electronic nose built from gas sensors, temperature and humidity. Each component is independent and reported honestly. The goal is research, not diagnosing users.</p></div>
+<div class="panel"><h2>Objectives</h2><ul class="muted">
+<li>Investigate AI-based asthma detection through breath analysis.</li>
+<li>Analyze respiratory sounds (wheeze, crackle) from a stethoscope connected to the laptop.</li>
+<li>Collect real readings from the electronic nose and show their connection status.</li>
+<li>Build and validate a separate gas-analysis model on our own labelled dataset.</li>
+<li>Show each component&rsquo;s status, never unvalidated predictions.</li>
+<li>Let users follow their saved results over time.</li>
+<li>Evaluate the limits and potential of the system.</li></ul></div>
+<div class="panel"><h2>What works today and what is planned</h2><div class="implrow"><span class="tag done">Implemented</span><span>Accounts, saved sessions, history and printable reports<small>Each user sees only their own records.</small></span></div><div class="implrow"><span class="tag done">Implemented</span><span>Audio recording from a selected input device, or upload of an existing file<small>Waveform and spectrogram preview; the recording is saved with its session. Tested with a simulated input device; it still needs to be verified with the actual digital stethoscope and audio interface.</small></span></div><div class="implrow"><span class="tag done">Implemented</span><span>Wheeze and crackle models<small>Separate scores and thresholds. Trained on the public ICBHI data; held-out performance is modest.</small></span></div><div class="implrow"><span class="tag done">Implemented</span><span>Electronic-nose connection status and live readings<small>Connected, Disconnected, Receiving Data and Error states; latest values and charts from the readings the ESP32 sends.</small></span></div><div class="implrow"><span class="tag plan">Planned</span><span>Saving electronic-nose readings to a user&rsquo;s sessions<small>Readings are currently held in memory only and are lost when the server restarts.</small></span></div><div class="implrow"><span class="tag plan">Planned</span><span>Gas-analysis model<small>Needs our own labelled dataset collected at a hospital, then validation. No gas result is shown until then.</small></span></div><div class="implrow"><span class="tag plan">Planned</span><span>Evaluating the audio models on our own stethoscope recordings<small>Current figures come from a different recording setup.</small></span></div></div>
+<div class="grid2">
+<div class="panel"><h2>Team</h2><p class="muted">Mariam Ahmed Ewida <br> Nour Mahmoud Abd ELmonsef</p></div>
+<div class="panel"><h2>Technologies</h2><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Chart.js</li><li>Python</li><li>FastAPI</li><li>Librosa</li><li>scikit-learn</li><li>SQLite</li><li>ESP32</li></ul></div>
+</div></div></section>
+<section class="tint"><div class="wrap"><div class="note"><h3>Research disclaimer</h3><p>This platform is designed for research and educational purposes only. It does not provide medical diagnosis or replace professional medical evaluation.</p></div></div></section>
+</main>
+<footer class="site"><div class="wrap"><span>E-Nose PulmoScan &copy; <span id="year"></span></span><span>Research prototype, not a diagnostic device</span></div></footer>
+<script src="../js/main.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | E-Nose PulmoScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body data-auth="required">
+<header class="site"><div class="wrap bar">
+<a class="logo" href="../index.html"><img src="../assets/lungs.png" alt=""><span>E-Nose PulmoScan</span></a>
+<nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/dashboard.html" aria-current="page">Dashboard</a><a href="../pages/breathing-analysis.html">Audio Analysis</a><a href="../pages/electronic-nose.html">Electronic Nose</a><a href="../pages/model-performance.html">Model Performance</a><a href="../pages/research.html">Research</a><a href="../pages/about.html">About</a></nav>
+</div></header>
+<div class="pagehead"><div class="wrap"><h1>Dashboard</h1><p>Prototype connection status, your latest respiratory analysis and the latest sensor measurements.</p></div></div>
+<main>
+<section><div class="wrap stack">
+<div class="panel"><h2>Prototype connection status</h2>
+<div class="statusgrid">
+<div class="stat"><h3>Prototype hardware</h3><div id="hwChip"></div><p id="hwText">Checking…</p></div>
+<div class="stat"><h3>Audio input</h3><div id="auChip"></div><p id="auText">Checking…</p></div>
+<div class="stat"><h3>Electronic nose</h3><div id="enChip"></div><p id="enText">Checking…</p></div>
+<div class="stat"><h3>Last successful data reception</h3><b id="rxNose">&mdash;</b><p>Electronic nose</p><b id="rxAudio">&mdash;</b><p>Audio session</p></div>
+</div>
+<p class="small muted mt">Audio input shows whether the browser can see a recording device. Which device it is, and whether it carries a signal, is confirmed on the <a href="breathing-analysis.html">Audio Analysis</a> page.</p></div>
+
+<div class="panel"><h2>Latest respiratory analysis <span class="actions tight"><a class="btn primary sm" href="breathing-analysis.html">New recording</a></span></h2>
+<p class="small muted" style="margin:-6px 0 14px">Wheeze and crackle findings are two separate acoustic analyses. They are not an asthma classification and not an asthma probability.</p>
+<div id="latest"><div class="empty" style="height:120px">Loading…</div></div></div>
+
+<div class="panel"><h2>Latest sensor measurements <span id="snChip"></span></h2>
+<div class="tiles" id="tiles"></div>
+<p class="small muted mt" id="snNote">Live values from the electronic nose. They are not yet saved to your profile.</p>
+<div class="actions"><a class="btn ghost sm" href="electronic-nose.html">Open Electronic Nose</a></div></div>
+
+<div class="statrow" id="stats"></div>
+<div class="panel"><h2>Recent sessions</h2><div id="recent" class="tblwrap"></div></div>
+<div id="objective"></div>
+</div></section>
+<section class="tint"><div class="wrap"><div class="note"><h3>Research disclaimer</h3><p>This platform is designed for research and educational purposes only. It does not provide medical diagnosis or replace professional medical evaluation.</p></div></div></section>
+</main>
+<footer class="site"><div class="wrap"><span>E-Nose PulmoScan &copy; <span id="year"></span></span><span>Research prototype, not a diagnostic device</span></div></footer>
+<script src="../js/main.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/research.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

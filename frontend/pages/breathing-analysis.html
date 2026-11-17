@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio Analysis | E-Nose PulmoScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body data-auth="required">
+<header class="site"><div class="wrap bar">
+<a class="logo" href="../index.html"><img src="../assets/lungs.png" alt=""><span>E-Nose PulmoScan</span></a>
+<nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/dashboard.html">Dashboard</a><a href="../pages/breathing-analysis.html" aria-current="page">Audio Analysis</a><a href="../pages/electronic-nose.html">Electronic Nose</a><a href="../pages/model-performance.html">Model Performance</a><a href="../pages/research.html">Research</a><a href="../pages/about.html">About</a></nav>
+</div></header>
+<div class="pagehead"><div class="wrap"><h1>Audio Analysis</h1><p>Record respiratory sounds from the stethoscope, view the waveform, and send the recording to the wheeze and crackle models.</p></div></div>
+<main>
+<section><div class="wrap stack">
+<div class="panel"><h2>1. Audio input <span id="inChip"></span></h2>
+<p class="muted">Connect the digital stethoscope (or its audio interface) to the laptop, then check that the browser can use it. Echo cancellation, noise suppression and automatic gain are switched off so the recording stays as close to the raw signal as possible.</p>
+<div class="toolbar mt"><div class="field"><label for="dev">Input device</label><select id="dev" class="sel"><option value="">Default input</option></select></div><button class="btn ghost sm" id="check" type="button">Check audio input</button></div>
+<div class="meter-in" aria-hidden="true"><i id="lvl"></i></div>
+<p class="small muted mt" id="inInfo">Press &ldquo;Check audio input&rdquo;. The browser will ask for permission to use the input.</p>
+<div id="inMsg" class="msg" role="alert" style="margin-top:12px"></div></div>
+
+<div class="panel"><h2>2. Record respiratory sound <span id="recChip"></span></h2>
+<div class="rec"><button class="btn primary" id="rec" type="button">Start recording</button><div class="time"><span id="timer">00:00</span> <small>/ 00:30 max</small></div></div>
+<p class="lbl">Live waveform</p><canvas id="live" class="viz" aria-label="Live waveform of the audio input"></canvas>
+<p class="small muted mt">Hold the stethoscope in place and breathe normally. Record at least 1 second; recording stops automatically at 30 seconds, the longest part the models analyze.</p>
+<div id="recMsg" class="msg" role="alert" style="margin-top:12px"></div></div>
+
+<div class="panel"><h2>3. Review and analyze</h2>
+<span class="filebtn"><span class="btn ghost sm">Or choose an existing recording</span><input id="file" type="file" accept=".wav,.flac,.ogg,audio/wav,audio/x-wav,audio/flac,audio/ogg" aria-label="Choose a WAV, FLAC or OGG recording"></span>
+<p class="small muted mt">Accepted: WAV, FLAC or OGG, up to 25 MB, at least 1 second; the first 30 seconds are analyzed.</p>
+<div id="notice" class="msg" role="alert" style="margin-top:14px"></div>
+<audio id="player" controls hidden></audio>
+<div class="stats"><div><b id="dur">&mdash;</b><span>Duration</span></div><div><b id="sr">&mdash;</b><span>Sampling rate</span></div><div><b id="src">&mdash;</b><span>Source</span></div></div>
+<p class="lbl">Waveform</p><canvas id="wave" class="viz" aria-label="Waveform of the recording"></canvas>
+<p class="lbl">Spectrogram (0 to 4 kHz)</p><canvas id="spec" class="viz spec" aria-label="Spectrogram of the recording"></canvas></div>
+
+<div class="panel"><h2>4. Model analysis</h2>
+<div id="status" class="msg" role="status"></div>
+<button class="btn primary" id="analyze" type="button" disabled>Analyze and save session</button>
+<div id="visual" class="mt"></div>
+<table class="tbl mt"><thead><tr><th>Output</th><th>Result</th></tr></thead><tbody id="result"><tr><td colspan="2" class="muted">Record or choose a recording to begin.</td></tr></tbody></table>
+<div class="warn mt">Wheeze and crackle results are two separate acoustic analyses. They are not an asthma diagnosis and not an asthma probability, and detecting either pattern does not confirm asthma. They are not combined with the electronic-nose readings. See the <a href="research.html">Research page</a> for the objective and the limits of these models.</div></div>
+</div></section>
+<section class="tint"><div class="wrap"><div class="note"><h3>Research disclaimer</h3><p>This platform is designed for research and educational purposes only. It does not provide medical diagnosis or replace professional medical evaluation.</p></div></div></section>
+</main>
+<footer class="site"><div class="wrap"><span>E-Nose PulmoScan &copy; <span id="year"></span></span><span>Research prototype, not a diagnostic device</span></div></footer>
+<script src="../js/main.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/wav.js"></script>
+<script src="../js/breathing-analysis.js"></script>
+</body>
+</html>

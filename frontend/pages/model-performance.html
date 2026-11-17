@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Performance | E-Nose PulmoScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<header class="site"><div class="wrap bar">
+<a class="logo" href="../index.html"><img src="../assets/lungs.png" alt=""><span>E-Nose PulmoScan</span></a>
+<nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/dashboard.html">Dashboard</a><a href="../pages/breathing-analysis.html">Audio Analysis</a><a href="../pages/electronic-nose.html">Electronic Nose</a><a href="../pages/model-performance.html" aria-current="page">Model Performance</a><a href="../pages/research.html">Research</a><a href="../pages/about.html">About</a></nav>
+</div></header>
+<div class="pagehead"><div class="wrap"><h1>Model Performance</h1><p>Stored evaluation metrics for the wheeze and crackle models. They detect different sounds and are not ranked.</p></div></div>
+<main>
+<section><div class="wrap stack">
+<div class="panel"><h2>Held-out performance of the audio models</h2>
+<div class="tblwrap"><table class="tbl"><thead><tr><th>Metric</th><th>Wheeze model</th><th>Crackle model</th></tr></thead><tbody id="rows"><tr><td colspan="3" class="muted">Loading…</td></tr></tbody></table></div>
+<p class="small muted mt">Values are the stored output of the training script (<code>training/train_audio.py</code>), unchanged, from a test set split by patient. The models were trained on the public ICBHI recordings, not on our own stethoscope. They label wheeze-like and crackle-like sounds, not asthma. An ROC-AUC near 0.5 is chance level.</p></div>
+<div class="grid2">
+<div class="panel"><h2>Confusion matrix: wheeze model</h2><div id="matrix-wheeze"></div></div>
+<div class="panel"><h2>Confusion matrix: crackle model</h2><div id="matrix-crackle"></div></div>
+</div>
+<div class="panel"><h2>Metrics side by side</h2><div class="chartbox sm" id="cmpChart"></div></div>
+<div class="panel"><h2>How to read this</h2>
+<ul class="muted"><li>The decision threshold of each model was tuned on validation data to catch more positives, which lowers precision. That is why the scores in your sessions are compared with a threshold, not with 50%.</li><li>These results are weak. They are suitable for exploring the prototype, not for any clinical use.</li><li>Performance on recordings from our own stethoscope has not been measured yet.</li></ul>
+<div class="warn mt">The electronic nose has no model, so it has no performance figures. It will be evaluated separately on our own labelled data once that has been collected.</div></div>
+</div></section>
+<section class="tint"><div class="wrap"><div class="note"><h3>Research disclaimer</h3><p>This platform is designed for research and educational purposes only. It does not provide medical diagnosis or replace professional medical evaluation.</p></div></div></section>
+</main>
+<footer class="site"><div class="wrap"><span>E-Nose PulmoScan &copy; <span id="year"></span></span><span>Research prototype, not a diagnostic device</span></div></footer>
+<script src="../js/main.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/vendor/chart.umd.js"></script>
+<script src="../js/model-performance.js"></script>
+</body>
+</html>

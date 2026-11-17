@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research | E-Nose PulmoScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<header class="site"><div class="wrap bar">
+<a class="logo" href="../index.html"><img src="../assets/lungs.png" alt=""><span>E-Nose PulmoScan</span></a>
+<nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/dashboard.html">Dashboard</a><a href="../pages/breathing-analysis.html">Audio Analysis</a><a href="../pages/electronic-nose.html">Electronic Nose</a><a href="../pages/model-performance.html">Model Performance</a><a href="../pages/research.html" aria-current="page">Research</a><a href="../pages/about.html">About</a></nav>
+</div></header>
+<div class="pagehead"><div class="wrap"><h1>Research &amp; results</h1><p>AI-based asthma detection using breath analysis: problem, methods, data, validation and limits.</p></div></div>
+<main>
+<section><div class="wrap grid2" style="align-items:start">
+<div class="stack">
+<div class="panel poster"><span class="pill">Research problem</span><p>Asthma is a chronic respiratory condition. Diagnosis can be slow and often needs specialist equipment, which is hard to find in some regions. Our central question is whether breath analysis, interpreted by machine learning, can support asthma detection. This prototype studies two signals separately: the sound of breathing and the gas composition of breath.</p></div>
+<div class="panel poster"><span class="pill">Background</span><p>Breathing sounds such as wheezes and crackles carry information about the airways. Volatile organic compounds in exhaled breath are studied as chemical markers of inflammation, and electronic noses use arrays of gas sensors to record such patterns.</p></div>
+<div class="panel poster"><span class="pill">Methodology</span><ul>
+<li><b>Respiratory audio analysis:</b> a stethoscope recording is captured on the laptop, then analyzed by one model for wheeze-like sounds and one for crackle-like sounds. Reported separately, never as an asthma probability.</li>
+<li><b>Electronic nose:</b> MQ-135, MQ-7 and MQ-2 gas sensors with temperature and humidity, read by an ESP32 and shown live. A gas-analysis model is future work.</li>
+<li>One independent pipeline per signal.</li></ul></div>
+<div class="panel poster"><span class="pill">Dataset description</span><ul>
+<li><b>ICBHI Respiratory Sound Database:</b> annotated breathing recordings, used to train the wheeze and crackle models.</li>
+<li><b>Our own electronic-nose dataset (planned):</b> labelled readings from our hardware, to be collected at a hospital. No gas model exists until it is collected.</li></ul>
+<p class="mt">These sources measure different things and are never treated as interchangeable.</p></div>
+</div>
+<div class="stack">
+<div class="panel poster"><span class="pill">Data preprocessing</span><ul>
+<li>Audio: mono, resampled to 4 kHz, cut into 3-second windows, 65 acoustic features (Librosa/NumPy).</li>
+<li>Electronic nose: readings are checked (finite numbers, sensor ranges) before they are shown. Baseline correction and response features are planned for the model.</li></ul></div>
+<div class="panel poster"><span class="pill">Machine learning algorithms</span><p>Random forests for the wheeze and crackle models, with fixed hyper-parameters and a decision threshold chosen on validation data rather than test data. The electronic-nose algorithm will be chosen on its own dataset.</p></div>
+<div class="panel poster"><span class="pill">Evaluation metrics</span><p>Sensitivity, specificity, precision, F1-score, ROC-AUC and confusion matrices on a patient-wise held-out test set. See <a href="model-performance.html">Model Performance</a>.</p></div>
+<div class="panel poster"><span class="pill">Limitations</span><p>This is a research prototype, not a clinically validated device. The audio models label wheezes and crackles, not asthma, perform only modestly on held-out data, and were trained on a public dataset recorded with other equipment. Recording position, noise and breathing effort change the result. The electronic nose has no analysis model yet, and MQ gas sensors are not diagnostic tools.</p></div>
+<div class="panel poster"><span class="pill">References</span><ul><li>Rocha, B. M. et al. An open access database for the evaluation of respiratory sound classification algorithms. Physiological Measurement, 2019.</li><li>Add your final references here.</li></ul></div>
+</div></div></section>
+<section class="tint"><div class="wrap"><div class="note"><h3>Research disclaimer</h3><p>This platform is designed for research and educational purposes only. It does not provide medical diagnosis or replace professional medical evaluation.</p></div></div></section>
+</main>
+<footer class="site"><div class="wrap"><span>E-Nose PulmoScan &copy; <span id="year"></span></span><span>Research prototype, not a diagnostic device</span></div></footer>
+<script src="../js/main.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

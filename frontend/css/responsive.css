@@ -1,0 +1,12 @@
+@media (max-width:860px){
+ .bar{gap:16px}.logo span{display:none}
+ .hero{padding:40px 0 24px}.hero-grid{grid-template-columns:1fr}
+ .hero-art{order:-1;border-radius:24px}.hero-art img{max-height:260px}
+ .intro{grid-template-columns:1fr;gap:18px}
+ .two{grid-template-columns:1fr}.two>div,.two>div+div{padding:26px 0 4px;border-left:0}.two>div+div{border-top:1px solid #d7d9de}
+ ol.steps{grid-template-columns:1fr 1fr;gap:26px 20px}
+ section{padding:48px 0}.grid2{grid-template-columns:1fr}
+ .pagehead{padding:34px 0}
+}
+@media (max-width:480px){.wrap{padding:0 18px}.stats{gap:20px}.chartbox{height:260px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

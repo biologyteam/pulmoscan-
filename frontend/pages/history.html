@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History | E-Nose PulmoScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body data-auth="required">
+<header class="site"><div class="wrap bar">
+<a class="logo" href="../index.html"><img src="../assets/lungs.png" alt=""><span>E-Nose PulmoScan</span></a>
+<nav aria-label="Main"><a href="../index.html">Home</a><a href="../pages/dashboard.html">Dashboard</a><a href="../pages/breathing-analysis.html">Audio Analysis</a><a href="../pages/electronic-nose.html">Electronic Nose</a><a href="../pages/model-performance.html">Model Performance</a><a href="../pages/research.html">Research</a><a href="../pages/about.html">About</a></nav>
+</div></header>
+<div class="pagehead"><div class="wrap"><h1>History and progress</h1><p>Saved results over time. Every point comes from a measurement you stored.</p></div></div>
+<main>
+<section><div class="wrap stack">
+<div class="panel"><h2>Filters</h2><div class="toolbar">
+<div class="field"><label for="from">From</label><input id="from" type="date"></div>
+<div class="field"><label for="to">To</label><input id="to" type="date"></div>
+<div class="field"><label for="type">Measurement type</label><select id="type" style="padding:9px 12px;font:400 16px var(--sans);border:1px solid #c9ccd3;border-radius:8px"><option value="audio">Audio analysis</option><option value="gas" disabled>Gas sensors (not stored yet)</option></select></div>
+<button class="btn primary sm" id="apply" type="button">Apply</button><button class="btn ghost sm" id="reset" type="button">Reset</button></div></div>
+<div class="panel"><h2>Audio model scores over time</h2><div class="chartbox" id="chartholder"><canvas id="chart" aria-label="Line chart of wheeze and crackle model scores by date"></canvas></div>
+<p class="small muted mt">Scores are the models' mean output for each recording. The dashed lines are each model's decision threshold. Scores are not probabilities of disease.</p></div>
+<div class="panel"><h2>Sessions</h2><div id="list" class="tblwrap"></div></div>
+</div></section>
+<section class="tint"><div class="wrap"><div class="note"><h3>Research disclaimer</h3><p>This platform is designed for research and educational purposes only. It does not provide medical diagnosis or replace professional medical evaluation.</p></div></div></section>
+</main>
+<footer class="site"><div class="wrap"><span>E-Nose PulmoScan &copy; <span id="year"></span></span><span>Research prototype, not a diagnostic device</span></div></footer>
+<script src="../js/main.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/vendor/chart.umd.js"></script>
+<script src="../js/history.js"></script>
+</body>
+</html>
